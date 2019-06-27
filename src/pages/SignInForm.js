@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Icon, Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 import { signin } from '../services/api'
 
@@ -12,16 +12,19 @@ class SignInForm extends React.Component {
     }
 
     handleSubmit = () => {
-        console.log(this.state)
-        // signin(this.state.username, this.state.password)
-        // .then(data => {
-        //   if (data.error) {
-        //     alert(data.error)
-        //   } else {
-        //     this.props.signin(data)
-        //   }
-        // })
+        // console.log(this.state)
+        signin(this.state.username, this.state.password)
+        .then(data => {
+          if (data.error) {
+            alert(data.error)
+          } else {
+              console.log(this.props)
+            this.props.signin(data)
+          }
+        })
       }
+        // console.log(this.state)
+        
 
     handleChange = event =>
         this.setState({ [event.target.name]: event.target.value })
