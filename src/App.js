@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import SignInForm from './pages/SignInForm'
 
-import logo from './logo.svg';
+
 import './App.css';
 
 import 'semantic-ui-css/semantic.min.css'
@@ -43,7 +43,7 @@ class App extends Component {
     const { signin, signout } = this
     const { username } = this.state
     return (
-      <div classname='App'>
+      <div className='App'>
         <Switch>
         <Route exact path='/' component={SignInForm} />
         <Route path='/signin' component={props => <SignInForm signin={signin} {...props} />} />
@@ -53,25 +53,6 @@ class App extends Component {
     )
   }
 }
-// function App() {
-//   return (
-//     <div>
-//        <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header> 
-//     </div>
-//   );
-// }
+
 
 export default withRouter(App)
