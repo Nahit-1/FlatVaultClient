@@ -12,14 +12,15 @@ class SignInForm extends React.Component {
     }
 
     handleSubmit = () => {
-        signin(this.state.username, this.state.password)
-        .then(data => {
-          if (data.error) {
-            alert(data.error)
-          } else {
-            this.props.signin(data)
-          }
-        })
+        console.log(this.state)
+        // signin(this.state.username, this.state.password)
+        // .then(data => {
+        //   if (data.error) {
+        //     alert(data.error)
+        //   } else {
+        //     this.props.signin(data)
+        //   }
+        // })
       }
 
     handleChange = event =>
@@ -29,7 +30,7 @@ class SignInForm extends React.Component {
         const { username, password } = this.state
         const { handleChange, handleSubmit } = this
 
-// const SignInForm = () => (
+
         return (
             <div>
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -39,16 +40,25 @@ class SignInForm extends React.Component {
       </Header>
       <Form size='large'>
         <Segment stacked>
-          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+          <Form.Input 
+            fluid icon='user' 
+            iconPosition='left' 
+            placeholder='Username' 
+            name='username'
+            value={username}
+            onChange={handleChange}
+            />
           <Form.Input
-            fluid
-            icon='lock'
+            fluid icon='lock'
             iconPosition='left'
             placeholder='Password'
             type='password'
+            name='password'
+            value={password}
+            onChange={handleChange}
           />
 
-          <Button color='teal' fluid size='large'>
+          <Button onClick={handleSubmit} color='teal' fluid size='large'>
             Login
           </Button>
         </Segment>

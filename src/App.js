@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Switch>
-        <Route exact path='/' component={SignInForm} />
+        <Route exact path='/' component={SignInForm} /> 
         <Route path='/signin' component={props => <SignInForm signin={signin} {...props} />} />
         <Route component={() => <h1>Page not found.</h1>} />
         </Switch>
