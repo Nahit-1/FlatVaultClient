@@ -3,6 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 
 import HomePage from './pages/HomePage'
 import Header from './pages/Header'
+import NavBar from './components/NavBar'
 import SignInForm from './pages/SignInForm'
 
 
@@ -47,11 +48,12 @@ class App extends Component {
     const { username } = this.state
     return (
       <div className='App'>
+        <NavBar />
         <Header username={username} signout={signout} />
           <Switch>
           <Route path='/' component={props => <SignInForm signin={signin} {...props} />} /> 
           {/* <Route path='/signin' component={props => <SignInForm {...props} signin={signin} />} /> */}
-          <Route component={() => <h1>Page not fucking found.</h1>} />
+          <Route component={() => <h1>Page not found.</h1>} />
           </Switch>
       </div>
     )
