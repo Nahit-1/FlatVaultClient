@@ -22,7 +22,7 @@ class App extends Component {
 
   state = {
     username: '',
-    // games: [],
+    games: [],
   }
 
   signin = (user) => {
@@ -54,6 +54,18 @@ class App extends Component {
           }
         })
     }
+  }
+
+  selectGame = game => {
+    this.setState({
+      selectedGame: game
+    })
+  }
+
+  deselectGame = () => {
+    this.setState({
+      selectedGame: null
+    })
   }
 
   render() {
