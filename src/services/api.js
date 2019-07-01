@@ -2,7 +2,7 @@ const baseUrl = 'http://localhost:3001'
 const signinUrl = baseUrl + '/signin'
 const validateUrl = baseUrl + '/validate'
 
-const gamesURL = URL + "/games"
+const gamesUrl = baseUrl + "/games"
 
 export function signin (username, password) {
 
@@ -18,5 +18,10 @@ export function validate () {
         }).then(resp => resp.json())
     }
 
+export function getAllGames () {
+        return fetch(gamesUrl)
+        .then(resp => resp.json())
+}
 
-export default { signin, validate }
+
+export default { signin, validate, getAllGames }

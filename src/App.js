@@ -5,10 +5,15 @@ import HomePage from './pages/HomePage'
 import Header from './pages/Header'
 import NavBar from './components/NavBar'
 import SignInForm from './pages/SignInForm'
+
+
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
+
 import { validate } from './services/api'
-import GameIndex from './components/GameIndex'
+import { getAllGames } from './services/api'
+
+import GameIndex from './pages/GameIndex'
 
 const URL = "http://localhost:3001"
 const gamesURL = URL + "/games"
@@ -31,10 +36,10 @@ class App extends Component {
     localStorage.removeItem('token') // here we are removing the token on signout to prevent refresh = logged in
   }
 
-  getAllGames = () => fetch(gamesURL).then(resp => resp.json())
+  // getAllGames = () => fetch(gamesURL).then(resp => resp.json())
 
   componentDidMount = () => {
-    this.getAllGames().then(games => this.setState({ games }))
+    getAllGames().then(games => this.setState({ games }))
   }
 
   componentDidMount () {
@@ -57,13 +62,15 @@ class App extends Component {
       <div className='App'>
         <NavBar />
         <Header username={username} signout={signout} />
-        <GameIndex games={ this.state.games } />
+        {/* <GameIndex games={ this.state.games } /> */}
           <Switch>
           <Route path='/' component={props => <SignInForm signin={signin} {...props} />} /> 
+          <Route path='/library' component={props => <SignInForm signin={signin} {...props} />} />
           {/* <Route path='/signin' component={props => <SignInForm {...props} signin={signin} />} /> */}
           <Route component={() => <h1>Page not found.</h1>} />
           </Switch>
       </div>
+
     )
   }
 }

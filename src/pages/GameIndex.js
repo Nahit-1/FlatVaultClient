@@ -1,5 +1,5 @@
 import React from "react";
-import GameCard from "./GameCard";
+import GameCard from "../components/GameCard";
 import { Card } from "semantic-ui-react";
 
 class GameIndex extends React.Component {
