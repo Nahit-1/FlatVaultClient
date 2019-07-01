@@ -10,8 +10,15 @@
 }
 
 
-.App-NavBar {
-  
+.ui.page.modals.dimmer {
+  z-index: 2000;
+}
+
+.ui.active.modal {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  height: 80%;
 }
 
 .App-header {

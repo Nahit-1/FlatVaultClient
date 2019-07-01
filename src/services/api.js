@@ -2,6 +2,8 @@ const baseUrl = 'http://localhost:3001'
 const signinUrl = baseUrl + '/signin'
 const validateUrl = baseUrl + '/validate'
 
+const gamesURL = URL + "/games"
+
 export function signin (username, password) {
 
     return fetch(signinUrl, {

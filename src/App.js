@@ -5,18 +5,19 @@ import HomePage from './pages/HomePage'
 import Header from './pages/Header'
 import NavBar from './components/NavBar'
 import SignInForm from './pages/SignInForm'
-
-
 import './App.css';
-
 import 'semantic-ui-css/semantic.min.css'
-
 import { validate } from './services/api'
+import GameIndex from './components/GameIndex'
+
+const URL = "http://localhost:3001"
+const gamesURL = URL + "/games"
 
 class App extends Component {
 
   state = {
-    username: ''
+    username: '',
+    games: [],
   }
 
   signin = (user) => {
@@ -28,6 +29,12 @@ class App extends Component {
   signout = () => {
     this.setState({ username: ''}) // reverts username back to an empty string as per initial state. 
     localStorage.removeItem('token') // here we are removing the token on signout to prevent refresh = logged in
+  }
+
+  getAllGames = () => fetch(gamesURL).then(resp => resp.json())
+
+  componentDidMount = () => {
+    this.getAllGames().then(games => this.setState({ games }))
   }
 
   componentDidMount () {
@@ -50,6 +57,7 @@ class App extends Component {
       <div className='App'>
         <NavBar />
         <Header username={username} signout={signout} />
+        <GameIndex games={ this.state.games } />
           <Switch>
           <Route path='/' component={props => <SignInForm signin={signin} {...props} />} /> 
           {/* <Route path='/signin' component={props => <SignInForm {...props} signin={signin} />} /> */}
