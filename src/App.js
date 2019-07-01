@@ -22,7 +22,7 @@ class App extends Component {
 
   state = {
     username: '',
-    games: [],
+    // games: [],
   }
 
   signin = (user) => {
@@ -38,9 +38,9 @@ class App extends Component {
 
   // getAllGames = () => fetch(gamesURL).then(resp => resp.json())
 
-  componentDidMount = () => {
-    getAllGames().then(games => this.setState({ games }))
-  }
+  // componentDidMount = () => {
+  //   getAllGames().then(games => this.setState({ games }))
+  // }
 
   componentDidMount () {
     if (localStorage.token) {
@@ -50,6 +50,7 @@ class App extends Component {
             alert(data.error)
           } else {
             this.signin(data)
+            console.log(this.state)
           }
         })
     }
@@ -62,11 +63,12 @@ class App extends Component {
       <div className='App'>
         <NavBar />
         <Header username={username} signout={signout} />
-        {/* <GameIndex games={ this.state.games } /> */}
+        {/* <GameIndex games={ this.state.games }  /> */}
           <Switch>
+          <Route path='/library' component={props => <GameIndex username={ username} {...props } />} />
           <Route path='/' component={props => <SignInForm signin={signin} {...props} />} /> 
-          <Route path='/library' component={props => <SignInForm signin={signin} {...props} />} />
-          {/* <Route path='/signin' component={props => <SignInForm {...props} signin={signin} />} /> */}
+          {/* <Route path='/library' component={props => <SignInForm signin={signin} {...props} />} /> */}
+          <Route path='/login' component={props => <SignInForm {...props} signin={signin} />} />
           <Route component={() => <h1>Page not found.</h1>} />
           </Switch>
       </div>
