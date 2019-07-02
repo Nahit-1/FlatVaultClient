@@ -7,7 +7,7 @@ const ReviewContainer = props => {
     <div>
       <ul>
         {props.reviews.map(review => (
-          <li> {review.content} </li>
+          <li> {review.content} </li> // Review.first.usergame.user.username example route to get review author name. 
         ))}
       </ul>
     </div>
