@@ -12,7 +12,7 @@ import 'semantic-ui-css/semantic.min.css'
 import { validate } from './services/api'
 import GameIndex from './pages/GameIndex'
 import GameCard from './components/GameCard'
-
+import GameDetails from './components/GameDetails'
 
 
 
@@ -51,8 +51,11 @@ class App extends Component {
   }
 
   selectGame = game => {
+    // console.log(game)
     this.setState({
+    
       selectedGame: game
+
     })
   }
 
@@ -70,10 +73,16 @@ class App extends Component {
         <NavBar />
         <Header username={username} signout={signout} />
         {/* <GameIndex games={ this.state.games }  /> */}
+        {this.state.selectedGame && (
+          <GameDetails
+            game={this.state.selectedGame}
+            deselectGame={this.deselectGame}
+          />
+        )}
         <Switch>
           <Route 
             path='/allgames' 
-            component={props => <GameIndex username={ username} {...props } />} 
+            component={props => <GameIndex selectGame={this.selectGame} username={ username} {...props } />} 
           />
           <Route 
             path='/' 
