@@ -1,9 +1,11 @@
 import React from "react";
 import { Card, Rating, Image } from "semantic-ui-react";
+import App from '../App'
+
 
 class GameCard extends React.Component {
   render() {
-    const { game } = this.props;
+    const { game } = this.props
 
     return (
       <Card className="link" style={{backgroundColor:"#CAE4DB"}}>
@@ -14,7 +16,7 @@ class GameCard extends React.Component {
           onClick={() => this.props.selectGame(game)}
           src={game.imageurl}
           alt={game.slug}
-          title={game.slug}
+          title={game.slug}e
           style={{ height: "200px" }}
           fluid
         />

@@ -11,6 +11,8 @@ import 'semantic-ui-css/semantic.min.css'
 
 import { validate } from './services/api'
 import GameIndex from './pages/GameIndex'
+import GameCard from './components/GameCard'
+
 
 
 
@@ -19,12 +21,13 @@ class App extends Component {
   state = {
     username: '',
     games: [],
+    selectedGame: null,
   }
 
   signin = (user) => {
     this.setState({ username: user.username })
     localStorage.setItem('token', user.token)
-    this.props.history.push('/library')
+    this.props.history.push('/allgames')
   }
 
   signout = () => {
@@ -32,11 +35,6 @@ class App extends Component {
     localStorage.removeItem('token') // here we are removing the token on signout to prevent refresh = logged in
   }
 
-  // getAllGames = () => fetch(gamesURL).then(resp => resp.json())
-
-  // componentDidMount = () => {
-  //   getAllGames().then(games => this.setState({ games }))
-  // }
 
   componentDidMount () {
     if (localStorage.token) {
@@ -72,18 +70,26 @@ class App extends Component {
         <NavBar />
         <Header username={username} signout={signout} />
         {/* <GameIndex games={ this.state.games }  /> */}
-          <Switch>
-          <Route path='/library' component={props => <GameIndex username={ username} {...props } />} />
-          <Route path='/' component={props => <SignInForm signin={signin} {...props} />} /> 
-          {/* <Route path='/library' component={props => <SignInForm signin={signin} {...props} />} /> */}
-          <Route path='/login' component={props => <SignInForm {...props} signin={signin} />} />
-          <Route component={() => <h1>Page not found.</h1>} />
-          </Switch>
+        <Switch>
+          <Route 
+            path='/allgames' 
+            component={props => <GameIndex username={ username} {...props } />} 
+          />
+          <Route 
+            path='/' 
+            component={props => <SignInForm signin={signin} {...props} />}   
+          /> 
+          
+          <Route 
+            path='/login' 
+            component={props => <SignInForm {...props} signin={signin} />} 
+          />
+          <Route 
+            component={() => <h1>Page not found.</h1>}               
+          />
+        </Switch>
       </div>
-
     )
   }
 }
-
-
 export default withRouter(App)

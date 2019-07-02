@@ -3,6 +3,8 @@ import GameCard from "../components/GameCard";
 import { Card } from "semantic-ui-react";
 import { getAllGames } from "../services/api"
 
+import App from '../App'
+
 class GameIndex extends React.Component {
 
   state = {
@@ -24,7 +26,7 @@ class GameIndex extends React.Component {
             <GameCard
               key={ game.id }
               game={ game }
-            //   selectGame={ this.props.selectGame }
+              selectGame={ this.props.selectGame }
             />
           ))}
         </Card.Group>
