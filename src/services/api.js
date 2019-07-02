@@ -23,5 +23,12 @@ export function getAllGames () {
         .then(resp => resp.json())
 }
 
+export function signup (username, email, password) {
+    return fetch('http://localhost:3001/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: username, email: email, password: password })
+      }).then(resp => resp.json())
+}
 
-export default { signin, validate, getAllGames }
+export default { signin, validate, getAllGames, signup }

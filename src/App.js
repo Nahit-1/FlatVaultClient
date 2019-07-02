@@ -5,6 +5,7 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import Header from './pages/Header'
 import NavBar from './components/NavBar'
 import SignInForm from './pages/SignInForm'
+import SignUpForm from './pages/SignUpForm'
 
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
@@ -72,6 +73,7 @@ class App extends Component {
     return (
       <div className='App'>
         <NavBar />
+        <SignUpForm signin={this.signin}/>
         <Header username={username} signout={signout} />
         {/* <GameIndex games={ this.state.games }  /> */}
         {this.state.selectedGame && (
@@ -93,6 +95,13 @@ class App extends Component {
           <Route 
             path='/login' 
             component={props => <SignInForm {...props} signin={signin} />} 
+          />
+          <Route 
+            path='/signupform'
+          />
+          <Route
+            path='/mygames'
+            compnent={props => <SignInForm signin={signin} {...props} />}
           />
           <Route 
             component={() => <h1>Page not found.</h1>}               
