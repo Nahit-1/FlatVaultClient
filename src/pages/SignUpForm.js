@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Segment, Grid } from 'semantic-ui-react'
 
 import { signup } from '../services/api'
 
@@ -31,9 +31,16 @@ class SignUpForm extends Component {
     const { username, email, password } = this.state
     const { handleChange, handleSubmit } = this
     return (
+        
+        
+     
+        
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+     <Segment stacked> 
       <Form>
-        <Form.Group widths='equal'>
-          <Form.Input 
+        {/* <Form.Group widths='equal'> */}
+          <Form.Input
             fluid icon='user' 
             iconPosition='left' 
             fluid label='Username' 
@@ -65,13 +72,16 @@ class SignUpForm extends Component {
 
         />
           
-        </Form.Group>
+        {/* </Form.Group> */}
         
         {/* <Form.Button>Submit</Form.Button> */}
         <Button onClick={handleSubmit} color='teal' fluid size='large'>
             Create New Account !
           </Button>
       </Form>
+      </Segment>
+      </Grid.Column>
+      </Grid>
     )
   }
 }

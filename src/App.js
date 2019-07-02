@@ -73,7 +73,7 @@ class App extends Component {
     return (
       <div className='App'>
         <NavBar />
-        <SignUpForm signin={this.signin}/>
+        {/* <SignUpForm signin={this.signin}/> */}
         <Header username={username} signout={signout} />
         {/* <GameIndex games={ this.state.games }  /> */}
         {this.state.selectedGame && (
@@ -83,6 +83,10 @@ class App extends Component {
           />
         )}
         <Switch>
+        <Route 
+            path='/signupform'
+            component={props => <SignUpForm signup={this.signup} signin={this.signin} {...props} />}
+          />
           <Route 
             path='/allgames' 
             component={props => <GameIndex selectGame={this.selectGame} username={ username} {...props } />} 
@@ -96,9 +100,10 @@ class App extends Component {
             path='/login' 
             component={props => <SignInForm {...props} signin={signin} />} 
           />
-          <Route 
+          {/* <Route 
             path='/signupform'
-          />
+            component={props => <SignUpForm signup={this.signup} signin={this.signin} {...props} />}
+          /> */}
           <Route
             path='/mygames'
             compnent={props => <SignInForm signin={signin} {...props} />}
@@ -111,4 +116,6 @@ class App extends Component {
     )
   }
 }
+
+
 export default withRouter(App)
