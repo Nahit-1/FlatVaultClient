@@ -17,13 +17,12 @@ class ReviewForm extends React.Component {
 
   processForm = e => {
     e.preventDefault();
-    Adapter.newReview(e.target.review.value, this.props.game.id, this.props.user.id)
+    Adapter.newReview(e.target.review.value, this.props.game.id, 6) 
+    // Adapter.newReview(e.target.review.value, this.props.game.id, this.props.user.id)
       .then(review => this.props.addReview(review))
       .then((e.target.review.value = ""));
   };
 }
 
-// I need to call Adapter.newFeedback()
-// pass in this.props.game_id & content with (hard coded user_id)
 
 export default ReviewForm;
