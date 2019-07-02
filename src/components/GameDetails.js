@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Header, Image, Modal, } from "semantic-ui-react";
 
 import Adapter from "../services/Adapter"
-// import ReviewContainer from "./ReviewContainer"; // need to create component to display all reviews.
+import ReviewContainer from "../components/ReviewContainer"; //create component to display all reviews.
 // import ReviewForm from "./ReviewForm" // need to make component to create review
 
 class GameDetails extends Component {
@@ -37,7 +37,7 @@ class GameDetails extends Component {
             <hr />
 
 
-            {/* <FeedbackContainer feedbacks = { this.state.reviews } /> */}
+            <ReviewContainer reviews = { this.state.reviews } />
             {/* <FeedbackForm addReview={this.addReview} game={this.props.game} game_id={this.props.game_id} reviews={this.state.reviews}/> */}
           </Modal.Description>
         </Modal.Content>
