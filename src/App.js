@@ -63,6 +63,7 @@ class App extends Component {
     this.setState({
       selectedGame: null
     })
+    // document.querySelector("div.ui.modal.transition.visible.active").style.display = "none"
   }
 
   render() {

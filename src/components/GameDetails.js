@@ -22,20 +22,21 @@ class GameDetails extends Component {
 
 
   render() {
-      console.log(this.props.game)
+    //   console.log(this.props.game)
     return (
       <Modal open={this.props.game} onClose={ this.props.deselectGame }>
         <Modal.Header>{this.props.game.name}</Modal.Header>
         <Modal.Content image style={{backgroundColor:"#CAE4DB"}}>
           <Image
-            wrapped
-            size="large"
+            wrapped size="large"
             src={this.props.game.imageurl}
             alt={this.props.game.slug}
           />
           <Modal.Description>
-            <Header>Feedback:</Header>
+            <Header>User Reviews:</Header>
             <hr />
+
+
             {/* <FeedbackContainer feedbacks = { this.state.reviews } /> */}
             {/* <FeedbackForm addReview={this.addReview} game={this.props.game} game_id={this.props.game_id} reviews={this.state.reviews}/> */}
           </Modal.Description>

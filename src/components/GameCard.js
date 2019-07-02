@@ -13,7 +13,7 @@ class GameCard extends React.Component {
           <Card.Header> {game.name} </Card.Header>
         </Card.Content>
         <Image
-          // onClick={() => this.props.selectGame(game)}
+          onClick={() => this.props.selectGame(game)}
           src={game.imageurl}
           alt={game.slug}
           title={game.slug}
