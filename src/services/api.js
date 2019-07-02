@@ -23,6 +23,12 @@ export function getAllGames () {
         .then(resp => resp.json())
 }
 
+export function getOwnedGames () {
+        return fetch('http://localhost:3001/usergames', {
+                headers: { 'Authorisation': localStorage.token }
+        }).then(resp => resp.json())
+}
+
 export function signup (username, email, password) {
     return fetch('http://localhost:3001/signup', {
         method: 'POST',

@@ -1,5 +1,43 @@
 import React from 'react'
+import { Card } from "semantic-ui-react"
 
 import GameCard from '../components/GameCard'
+import GameDetails from '../components/GameDetails'
+import { getOwnedGames } from "../services/api" 
 
-import 
+import api from '../services/api'
+
+
+class Library extends React.Component {
+
+    state = {
+        games: []
+      }
+
+    componentDidMount = () => {
+        if (!this.props.username) {
+          this.props.history.push('/login')
+        } else {
+          getOwnedGames().then(games => this.setState({ games }))
+        }
+      }
+
+      render() {
+        return (
+          <div >
+            <Card.Group style={{display: 'flex', justifyContent:'center', direction:"column"}}>
+              {this.state.games.map(game => (
+                <GameCard
+                  key={ game.id }
+                  game={ game }
+                  selectGame={ this.props.selectGame }
+                />
+              ))}
+            </Card.Group>
+          </div>
+        );
+      }
+
+}
+
+export default Library

@@ -6,7 +6,7 @@ import { Button } from 'semantic-ui-react'
 import logo from '../logo.svg'
 
 const Header = props =>
-  <header className='App-header' style={{backgroundColor:"#fc5226"}}>
+  <header className='App-header' style={{backgroundColor:"#1dbab4"}}>
     {/* <Link to='/'><img src={logo} className='App-logo' alt='logo' /></Link> */}
     <h1 className='App-title'>
       {

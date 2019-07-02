@@ -6,6 +6,7 @@ import Header from './pages/Header'
 import NavBar from './components/NavBar'
 import SignInForm from './pages/SignInForm'
 import SignUpForm from './pages/SignUpForm'
+import Library from './pages/Library'
 
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
@@ -99,6 +100,10 @@ class App extends Component {
           <Route 
             path='/login' 
             component={props => <SignInForm {...props} signin={signin} />} 
+          />
+          <Route 
+            path='/library'
+            component={props => <Library signup={this.signup} signin={this.signin} {...props} />}
           />
           {/* <Route 
             path='/signupform'
