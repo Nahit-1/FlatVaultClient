@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import Search from './Search'
 
 export default class NavBar extends Component {
   state = {}
@@ -27,6 +28,9 @@ export default class NavBar extends Component {
 
           <Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}>
             Help
+          </Menu.Item>
+          <Menu.Item>
+            <Search handleSearch={this.props.handleSearch} search={this.props.search} />
           </Menu.Item>
         </Menu.Menu>
       </Menu>

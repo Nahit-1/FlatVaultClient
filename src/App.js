@@ -8,6 +8,7 @@ import SignInForm from './pages/SignInForm'
 import SignUpForm from './pages/SignUpForm'
 import Library from './pages/Library'
 
+
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 
@@ -24,6 +25,7 @@ class App extends Component {
     username: '',
     games: [],
     selectedGame: null,
+    searchTerm: '',
   }
 
   signin = (user) => {
@@ -52,6 +54,10 @@ class App extends Component {
     }
   }
 
+  handleSearch = e => {
+    this.setState({ searchTerm: e.target.value.toLowerCase() })
+  }
+
   selectGame = game => {
     // console.log(game)
     this.setState({
@@ -68,12 +74,26 @@ class App extends Component {
     // document.querySelector("div.ui.modal.transition.visible.active").style.display = "none"
   }
 
+  filterBySearch = collection => {
+    return collection.filter(game => {
+      if (this.state.searchTerm) {
+        return game.name.toLowerCase().includes(this.state.searchTerm)
+      } else {
+        return true
+      }
+    })
+  }
+
+  applySearchToIndex =  (collection) => {
+    return this.filterBySearch(collection)
+  }
+
   render() {
     const { signin, signout } = this
     const { username } = this.state
     return (
       <div className='App'>
-        <NavBar />
+        <NavBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} />
         {/* <SignUpForm signin={this.signin}/> */}
         <Header username={username} signout={signout} />
         {/* <GameIndex games={ this.state.games }  /> */}
@@ -90,7 +110,7 @@ class App extends Component {
           />
           <Route 
             path='/allgames' 
-            component={props => <GameIndex selectGame={this.selectGame} username={ username} {...props } />} 
+            component={props => <GameIndex games={this.applySearchToIndex(this.state.games)} selectGame={this.selectGame} username={ username} {...props } />} 
           />
           <Route 
             path='/' 
