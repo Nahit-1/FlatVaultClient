@@ -105,6 +105,10 @@ class App extends Component {
         )}
         <Switch>
         <Route 
+            path='/library'
+            component={props => <Library signup={this.signup} signin={this.signin} {...props} />}
+          />
+        <Route 
             path='/signupform'
             component={props => <SignUpForm signup={this.signup} signin={this.signin} {...props} />}
           />
@@ -121,18 +125,10 @@ class App extends Component {
             path='/login' 
             component={props => <SignInForm {...props} signin={signin} />} 
           />
-          <Route 
-            path='/library'
-            component={props => <Library signup={this.signup} signin={this.signin} {...props} />}
-          />
           {/* <Route 
             path='/signupform'
             component={props => <SignUpForm signup={this.signup} signin={this.signin} {...props} />}
           /> */}
-          <Route
-            path='/mygames'
-            compnent={props => <SignInForm signin={signin} {...props} />}
-          />
           <Route 
             component={() => <h1>Page not found.</h1>}               
           />
