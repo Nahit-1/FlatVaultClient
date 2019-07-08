@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Header, Image, Modal, } from "semantic-ui-react";
 
 import Adapter from "../services/Adapter"
+import { getGame } from "../services/api"
 import ReviewContainer from "../components/ReviewContainer"; // component to display all reviews.
 import ReviewForm from "../components/ReviewForm" // component to create review
 import { newUsergame } from '../services/api'
@@ -9,6 +10,8 @@ import { newUsergame } from '../services/api'
 class GameDetails extends Component {
   state = {
     reviews: [],
+    game: null,
+    loading: true
   }
 
   addReview = (review) => {
@@ -16,26 +19,33 @@ class GameDetails extends Component {
   }
 
   handleSubmit = () => {
-      newUsergame(this.user.id, this.game.id)
+      newUsergame(this.props.user.id, this.state.game.id)
   }
 
   componentDidMount() {
-    Adapter.getGameReviews(this.props.game.id)
-    .then(reviews => this.setState({ reviews }))
+    getGame(this.props.match.params.id)
+    .then(game => {
+      this.setState({ game }, () => {
+        Adapter.getGameReviews(this.state.game.id)
+        .then(reviews => this.setState({ reviews }, () => {
+          this.setState({loading: false})
+        }))
+      })
+    })
   }
-
-
 
   render() {
     //   console.log(this.props.game)
     return (
-      <Modal open={this.props.game} onClose={ this.props.deselectGame }>
-        <Modal.Header>{this.props.game.name}</Modal.Header>
+      !this.state.loading ?
+      
+      <Modal open={true} onClose={() => this.props.history.push('/allgames')}>
+        <Modal.Header>{this.state.game.name}</Modal.Header>
         <Modal.Content image style={{backgroundColor:"#CAE4DB"}}>
           <Image
             wrapped size="large"
-            src={this.props.game.imageurl}
-            alt={this.props.game.slug}
+            src={this.state.game.imageurl}
+            alt={this.state.game.slug}
           />
           <Modal.Description>
             <Header>User Reviews:</Header>
@@ -50,6 +60,8 @@ class GameDetails extends Component {
             Add to Library!
           </Button>
       </Modal>
+      :
+      <div>LOADING</div>
     );
   }
 }

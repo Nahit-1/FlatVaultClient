@@ -1,36 +1,45 @@
 import React from "react";
 import GameCard from "../components/GameCard";
+import GameDetails from '../components/GameDetails';
 import { Card } from "semantic-ui-react";
-import { getAllGames } from "../services/api"
-
-import App from '../App'
+// import { getAllGames } from "../services/api";
+import { Route } from 'react-router-dom';
 
 class GameIndex extends React.Component {
 
-  state = {
-    games: []
+  selectGame = game => {
+    this.props.history.push(`${this.props.match.url}/${game.id}`)
+    // this.setState({
+    //   selectedGame: null
+    // })
+    // document.querySelector("div.ui.modal.transition.visible.active").style.display = "none"
   }
 
   componentDidMount = () => {
     if (!this.props.username) {
       this.props.history.push('/login')
-    } else {
-      getAllGames().then(games => this.setState({ games }))
     }
   }
+
   render() {
     return (
-      <div >
+      <>
+      <Route path={this.props.match.url} render={ () => 
+        <div >
         <Card.Group style={{display: 'flex', justifyContent:'center', direction:"column"}}>
-          {this.state.games.map(game => (
+          {this.props.games.map(game => (
             <GameCard
               key={ game.id }
               game={ game }
-              selectGame={ this.props.selectGame }
+              selectGame={ this.selectGame }
             />
-          ))}
+          ))
+          }
         </Card.Group>
       </div>
+      } />
+      <Route path={`${this.props.match.url}/:id`} component={props => <GameDetails {...props }/>} />
+      </>
     );
   }
 }
