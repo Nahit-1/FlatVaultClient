@@ -12,7 +12,7 @@ import Library from './pages/Library'
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 
-import { validate } from './services/api'
+import { validate, getAllGames } from './services/api'
 import GameIndex from './pages/GameIndex'
 import GameCard from './components/GameCard'
 import GameDetails from './components/GameDetails'
@@ -39,7 +39,6 @@ class App extends Component {
     localStorage.removeItem('token') // here we are removing the token on signout to prevent refresh = logged in
   }
 
-
   componentDidMount () {
     if (localStorage.token) {
       validate()
@@ -48,7 +47,10 @@ class App extends Component {
             alert(data.error)
           } else {
             this.signin(data)
-            console.log(this.state)
+            getAllGames().then(games => {
+              this.setState({ games })
+            })
+            // console.log(this.state)
           }
         })
     }
@@ -56,22 +58,6 @@ class App extends Component {
 
   handleSearch = e => {
     this.setState({ searchTerm: e.target.value.toLowerCase() })
-  }
-
-  selectGame = game => {
-    // console.log(game)
-    this.setState({
-    
-      selectedGame: game
-
-    })
-  }
-
-  deselectGame = () => {
-    this.setState({
-      selectedGame: null
-    })
-    // document.querySelector("div.ui.modal.transition.visible.active").style.display = "none"
   }
 
   filterBySearch = collection => {
@@ -97,12 +83,12 @@ class App extends Component {
         {/* <SignUpForm signin={this.signin}/> */}
         <Header username={username} signout={signout} />
         {/* <GameIndex games={ this.state.games }  /> */}
-        {this.state.selectedGame && (
+        {/* {this.state.selectedGame && (
           <GameDetails
             game={this.state.selectedGame}
             deselectGame={this.deselectGame}
           />
-        )}
+        )} */}
         <Switch>
         <Route 
             path='/library'

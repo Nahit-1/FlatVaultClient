@@ -23,6 +23,12 @@ export function getAllGames () {
         .then(resp => resp.json())
 }
 
+export async function getGame (id) {
+    let resp = await fetch(gamesUrl)
+    let games = await resp.json()
+    return games.find(game => parseInt(game.id) === parseInt(id))
+}
+
 export function getOwnedGames () {
         return fetch('http://localhost:3001/usergames', {
                 headers: { 'Authorisation': localStorage.token }
@@ -45,4 +51,4 @@ export function newUsergame ( user_id, game_id) {
     }).then(resp => resp.json())
   }
 
-export default { signin, validate, getAllGames, signup }
+export default { signin, validate, getAllGames, getGame, signup }
