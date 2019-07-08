@@ -9,10 +9,9 @@ class Adapter {
       return fetch('http://localhost:3001/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: content, usergame: usergame, })
+        body: JSON.stringify({ content: content, usergame: usergame })
       }).then(resp => resp.json())
     }
-  
   
   }
   

@@ -17,7 +17,7 @@ class ReviewForm extends React.Component {
 
   processForm = e => {
     e.preventDefault();
-    Adapter.newReview(e.target.review.value, this.props.game.id, 6) 
+    Adapter.newReview(e.target.review.value, this.props.game.id) 
     // Adapter.newReview(e.target.review.value, this.props.game.id, this.props.user.id)
       .then(review => this.props.addReview(review))
       .then((e.target.review.value = ""));
