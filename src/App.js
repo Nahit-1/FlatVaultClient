@@ -26,6 +26,7 @@ class App extends Component {
     games: [],
     selectedGame: null,
     searchTerm: '',
+    filterByGenre: '',
   }
 
   signin = (user) => {
@@ -56,6 +57,21 @@ class App extends Component {
     }
   }
 
+  handleGenreFilter = e => {
+    e.target.value === 'No Filter'
+      ? this.setState({ filterByGenre: "" })
+      : this.setState({ filterByGenre: e.target.value })
+  }
+
+  filterGamesByGenre = collection => {
+    if (this.state.filterByGenre) {
+      return collection.filter(game => {
+        return game.genre.toLowerCase() === this.state.filterByGenre
+      })
+    } else {
+      return collection
+    }
+  }
   handleSearch = e => {
     this.setState({ searchTerm: e.target.value.toLowerCase() })
   }
@@ -71,7 +87,10 @@ class App extends Component {
   }
 
   applySearchToIndex =  (collection) => {
-    return this.filterBySearch(collection)
+    // return this.filterBySearch(collection)
+    return this.filterBySearch(
+      this.filterGamesByGenre(collection)
+    )
   }
 
   render() {
@@ -79,7 +98,7 @@ class App extends Component {
     const { username } = this.state
     return (
       <div className='App'>
-        <NavBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} />
+        <NavBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} handleGenreFilter={this.handleGenreFilter} />
         {/* <SignUpForm signin={this.signin}/> */}
         <Header username={username} signout={signout} />
         {/* <GameIndex games={ this.state.games }  /> */}
