@@ -1,11 +1,9 @@
 import React from 'react'
-import { Card } from "semantic-ui-react"
-
 import GameCard from '../components/GameCard'
 import GameDetails from '../components/GameDetails'
-import { getOwnedGames } from "../services/api" 
+import { Card } from "semantic-ui-react"
 
-import api from '../services/api'
+import { getOwnedGames } from "../services/api" 
 
 
 class Library extends React.Component {
@@ -22,6 +20,8 @@ class Library extends React.Component {
         }
       }
 
+  
+
       render() {
         return (
           <div >
@@ -30,7 +30,7 @@ class Library extends React.Component {
                 <GameCard
                   key={ game.id }
                   game={ game }
-                  selectGame={ this.props.selectGame }
+                  // selectGame={ this.props.selectGame }
                 />
               ))}
             </Card.Group>
