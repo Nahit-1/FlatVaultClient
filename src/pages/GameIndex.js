@@ -38,7 +38,7 @@ class GameIndex extends React.Component {
         </Card.Group>
       </div>
       } />
-      <Route path={`${this.props.match.url}/:id`} component={props => <GameDetails {...props }/>} />
+      <Route path={`${this.props.match.url}/:id`} component={props => <GameDetails user_id={this.props.user.id} {...props }/>} />
       </>
     );
   }

@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   signout = () => {
-    this.setState({ user: '' }) // reverts username back to an empty string as per initial state. 
+    this.setState({ user: '', id: null }) // reverts username back to an empty string as per initial state. 
     localStorage.removeItem('token') // here we are removing the token on signout to prevent refresh = logged in
   }
 
@@ -121,7 +121,7 @@ class App extends Component {
           />
           <Route 
             path='/allgames' 
-            component={props => <GameIndex games={this.applySearchToIndex(this.state.games)} id={this.state.id} user={this.state.user} selectGame={this.selectGame} username={ this.state.user.username} {...props } />} 
+            component={props => <GameIndex games={this.applySearchToIndex(this.state.games)} id={this.state.id} user={this.state.user} user_id={this.state.user.id} selectGame={this.selectGame} username={ this.state.user.username} {...props } />} 
           />
           <Route 
             path='/' 
