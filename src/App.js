@@ -26,18 +26,19 @@ class App extends Component {
     selectedGame: null,
     searchTerm: '',
     filterByGenre: '',
-    user: ''
+    user: '',
+    // id: null
   }
 
   signin = (user) => {
-    console.log(user)
+    // console.log(user)
     this.setState({ user: user })
     localStorage.setItem('token', user.token)
     this.props.history.push('/allgames')
   }
 
   signout = () => {
-    this.setState({ user: ''}) // reverts username back to an empty string as per initial state. 
+    this.setState({ user: '' }) // reverts username back to an empty string as per initial state. 
     localStorage.removeItem('token') // here we are removing the token on signout to prevent refresh = logged in
   }
 
@@ -120,7 +121,7 @@ class App extends Component {
           />
           <Route 
             path='/allgames' 
-            component={props => <GameIndex games={this.applySearchToIndex(this.state.games)} user={this.state.user} selectGame={this.selectGame} username={ this.state.user.username} {...props } />} 
+            component={props => <GameIndex games={this.applySearchToIndex(this.state.games)} id={this.state.id} user={this.state.user} selectGame={this.selectGame} username={ this.state.user.username} {...props } />} 
           />
           <Route 
             path='/' 

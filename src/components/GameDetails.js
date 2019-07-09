@@ -7,6 +7,8 @@ import ReviewContainer from "../components/ReviewContainer"; // component to dis
 import ReviewForm from "../components/ReviewForm" // component to create review
 import { newUsergame } from '../services/api'
 
+import { decode } from '../services/utils'
+
 class GameDetails extends Component {
   state = {
     reviews: [],
@@ -57,7 +59,7 @@ class GameDetails extends Component {
             <ReviewForm addReview={this.addReview} game={this.props.game} game_id={this.props.game_id} reviews={this.state.reviews}/>
           </Modal.Description>
         </Modal.Content>
-        <Button onClick={this.handleSubmit} user={this.props.user} game_id={this.state.game.id}color='teal' fluid size='large'>
+        <Button onClick={this.handleSubmit} user_id={this.props.user} game_id={this.state.game.id} color='teal' fluid size='large'>
             Add to Library!
           </Button>
       </Modal>
