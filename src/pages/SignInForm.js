@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 import { signin } from '../services/api'
 
@@ -67,7 +67,7 @@ class SignInForm extends React.Component {
         </Segment>
       </Form>
       <Message>
-        New to FlatVault? <a href='#'>Sign Up</a>
+        New to FlatVault? <a href='/signupform'>Sign Up</a>
       </Message>
     </Grid.Column>
   </Grid>

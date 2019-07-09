@@ -7,8 +7,6 @@ import ReviewContainer from "../components/ReviewContainer"; // component to dis
 import ReviewForm from "../components/ReviewForm" // component to create review
 import { newUsergame } from '../services/api'
 
-import { decode } from '../services/utils'
-
 class GameDetails extends Component {
   state = {
     reviews: [],

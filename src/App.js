@@ -14,8 +14,6 @@ import 'semantic-ui-css/semantic.min.css'
 
 import { validate, getAllGames } from './services/api'
 import GameIndex from './pages/GameIndex'
-import GameCard from './components/GameCard'
-import GameDetails from './components/GameDetails'
 
 
 

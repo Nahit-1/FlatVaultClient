@@ -1,7 +1,5 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
 import Adapter from "../services/Adapter";
-import { thisTypeAnnotation } from "@babel/types";
 
 class ReviewForm extends React.Component {
   render() {

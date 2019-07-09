@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Rating, Image } from "semantic-ui-react";
-import App from '../App'
 
 
 class GameCard extends React.Component {

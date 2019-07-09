@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 
-import logo from '../logo.svg'
 
 const Header = props =>
   <header className='App-header' style={{backgroundColor:"#1dbab4"}}>
