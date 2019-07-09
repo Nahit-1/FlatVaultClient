@@ -31,7 +31,7 @@ export default class NavBar extends Component {
             Help
           </Menu.Item>
           <Menu.Item >
-          <GenreFilter handleGenreFilter={this.props.handleGenreFilter}/>
+          <GenreFilter handleGenreFilter={this.props.handleGenreFilter} />
         </Menu.Item>
           <Menu.Item>
             <Search handleSearch={this.props.handleSearch} search={this.props.search} />

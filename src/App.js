@@ -26,6 +26,7 @@ class App extends Component {
     games: [],
     selectedGame: null,
     searchTerm: '',
+    filterByGenre: '',
   }
 
   signin = (user) => {
@@ -97,7 +98,7 @@ class App extends Component {
     const { username } = this.state
     return (
       <div className='App'>
-        <NavBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} />
+        <NavBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} handleGenreFilter={this.handleGenreFilter} />
         {/* <SignUpForm signin={this.signin}/> */}
         <Header username={username} signout={signout} />
         {/* <GameIndex games={ this.state.games }  /> */}
