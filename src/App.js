@@ -22,21 +22,22 @@ import GameDetails from './components/GameDetails'
 class App extends Component {
 
   state = {
-    username: '',
     games: [],
     selectedGame: null,
     searchTerm: '',
     filterByGenre: '',
+    user: ''
   }
 
   signin = (user) => {
-    this.setState({ username: user.username })
+    console.log(user)
+    this.setState({ user: user })
     localStorage.setItem('token', user.token)
     this.props.history.push('/allgames')
   }
 
   signout = () => {
-    this.setState({ username: ''}) // reverts username back to an empty string as per initial state. 
+    this.setState({ user: ''}) // reverts username back to an empty string as per initial state. 
     localStorage.removeItem('token') // here we are removing the token on signout to prevent refresh = logged in
   }
 
@@ -95,12 +96,12 @@ class App extends Component {
 
   render() {
     const { signin, signout } = this
-    const { username } = this.state
+    const { user } = this.state
     return (
       <div className='App'>
         <NavBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} handleGenreFilter={this.handleGenreFilter} />
         {/* <SignUpForm signin={this.signin}/> */}
-        <Header username={username} signout={signout} />
+        <Header username={this.state.user.username} signout={signout} />
         {/* <GameIndex games={ this.state.games }  /> */}
         {/* {this.state.selectedGame && (
           <GameDetails
@@ -119,7 +120,7 @@ class App extends Component {
           />
           <Route 
             path='/allgames' 
-            component={props => <GameIndex games={this.applySearchToIndex(this.state.games)} selectGame={this.selectGame} username={ username} {...props } />} 
+            component={props => <GameIndex games={this.applySearchToIndex(this.state.games)} user={this.state.user} selectGame={this.selectGame} username={ this.state.user.username} {...props } />} 
           />
           <Route 
             path='/' 

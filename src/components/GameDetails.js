@@ -19,6 +19,7 @@ class GameDetails extends Component {
   }
 
   handleSubmit = () => {
+    // debugger
       newUsergame(this.props.user.id, this.state.game.id)
   }
 
@@ -56,7 +57,7 @@ class GameDetails extends Component {
             <ReviewForm addReview={this.addReview} game={this.props.game} game_id={this.props.game_id} reviews={this.state.reviews}/>
           </Modal.Description>
         </Modal.Content>
-        <Button onClick={this.handleSubmit} color='teal' fluid size='large'>
+        <Button onClick={this.handleSubmit} user={this.props.user} game_id={this.state.game.id}color='teal' fluid size='large'>
             Add to Library!
           </Button>
       </Modal>
