@@ -21,7 +21,7 @@ class GameDetails extends Component {
   }
 
   handleSubmit = () => {
-    debugger
+    // debugger
       newUsergame(this.props.user_id, this.state.game.id)
   }
 
