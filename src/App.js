@@ -27,7 +27,6 @@ class App extends Component {
     searchTerm: '',
     filterByGenre: '',
     user: '',
-    // id: null
   }
 
   signin = (user) => {
@@ -101,15 +100,9 @@ class App extends Component {
     return (
       <div className='App'>
         <NavBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} handleGenreFilter={this.handleGenreFilter} />
-        {/* <SignUpForm signin={this.signin}/> */}
+        
         <Header username={this.state.user.username} signout={signout} />
-        {/* <GameIndex games={ this.state.games }  /> */}
-        {/* {this.state.selectedGame && (
-          <GameDetails
-            game={this.state.selectedGame}
-            deselectGame={this.deselectGame}
-          />
-        )} */}
+        
         <Switch>
         <Route 
             path='/library'
@@ -132,10 +125,6 @@ class App extends Component {
             path='/login' 
             component={props => <SignInForm {...props} signin={signin} />} 
           />
-          {/* <Route 
-            path='/signupform'
-            component={props => <SignUpForm signup={this.signup} signin={this.signin} {...props} />}
-          /> */}
           <Route 
             component={() => <h1>Page not found.</h1>}               
           />
