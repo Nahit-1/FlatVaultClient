@@ -3,6 +3,8 @@ import GameCard from '../components/GameCard'
 import GameDetails from '../components/GameDetails'
 import { Card } from "semantic-ui-react"
 
+import { Route } from 'react-router-dom'
+
 import { getOwnedGames } from "../services/api" 
 
 

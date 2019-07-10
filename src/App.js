@@ -104,7 +104,7 @@ class App extends Component {
         <Switch>
         <Route 
             path='/library'
-            component={props => <Library signup={this.signup} signin={this.signin} {...props} />}
+            component={props => <Library signup={this.signup} signin={this.signin} {...props} user={this.state.user} selectGame={this.selectGame} />}
           />
         <Route 
             path='/signupform'
