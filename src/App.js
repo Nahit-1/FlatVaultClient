@@ -27,11 +27,11 @@ class App extends Component {
     user: '',
   }
 
-  signin = (user) => {
+  signin = (user, dontGoToAllGames) => {
     // console.log(user)
     this.setState({ user: user })
     localStorage.setItem('token', user.token)
-    this.props.history.push('/allgames')
+    if (!dontGoToAllGames) this.props.history.push('/allgames')
   }
 
   signout = () => {
@@ -46,7 +46,7 @@ class App extends Component {
           if (data.error) {
             alert(data.error)
           } else {
-            this.signin(data)
+            this.signin(data, true)
             getAllGames().then(games => {
               this.setState({ games })
             })

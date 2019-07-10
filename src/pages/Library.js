@@ -12,15 +12,20 @@ class Library extends React.Component {
         games: []
       }
 
-    componentDidMount = () => {
-        if (!this.props.username) {
-          this.props.history.push('/login')
-        } else {
-          getOwnedGames().then(games => this.setState({ games }))
-        }
-      }
+    // componentDidMount = () => {
+    //     if (!this.props.username) {
+    //       this.props.history.push('/login')
+    //     } else {
+    //       getOwnedGames().then(games => this.setState({ games }))
+    //     }
+    //   }
 
-  
+    componentDidMount = () => {
+     
+        getOwnedGames().then(games => this.setState({ games }))
+      }
+    
+    
 
       render() {
         return (
