@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Segment, Grid } from 'semantic-ui-react'
+import { Form, Button, Segment, Grid, Message } from 'semantic-ui-react'
 
 import { signup } from '../services/api'
 
@@ -79,6 +79,9 @@ class SignUpForm extends Component {
             Create New Account !
           </Button>
       </Form>
+      <Message>
+        Already have an account?  <a href='/signinform'>Sign In</a>
+      </Message>
       </Segment>
       </Grid.Column>
       </Grid>
