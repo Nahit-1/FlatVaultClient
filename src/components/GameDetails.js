@@ -11,7 +11,9 @@ class GameDetails extends Component {
   state = {
     reviews: [],
     game: null,
-    loading: true
+    loading: true,
+    userGame: null
+
   }
 
   addReview = (review) => {
@@ -21,6 +23,7 @@ class GameDetails extends Component {
   handleSubmit = () => {
     // debugger
       newUsergame(this.props.user_id, this.state.game.id)
+      .then(userGame => this.setState({ userGame }))
   }
 
   componentDidMount() {
@@ -54,7 +57,11 @@ class GameDetails extends Component {
 
 
             <ReviewContainer reviews = { this.state.reviews } />
-            <ReviewForm addReview={this.addReview} game={this.props.game} game_id={this.props.game_id} reviews={this.state.reviews}/>
+            {
+            this.state.userGame 
+            ? <ReviewForm addReview={this.addReview} game={this.state.game} game_id={this.state.game.id} user_id={this.props.user_id} reviews={this.state.reviews}/>
+            : null
+            }
           </Modal.Description>
         </Modal.Content>
         <Button 

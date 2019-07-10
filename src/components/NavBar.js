@@ -31,9 +31,9 @@ export default class NavBar extends Component {
           <Menu.Item>
             <Search handleSearch={this.props.handleSearch} search={this.props.search} />
           </Menu.Item>
-          <Menu.Item name='signup' active={activeItem === 'signup'} onClick={this.handleItemClick}>
+          {/* <Menu.Item name='signup' active={activeItem === 'signup'} onClick={this.handleItemClick}>
             Sign Up
-          </Menu.Item>
+          </Menu.Item> */}
 
           <Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}>
             Help

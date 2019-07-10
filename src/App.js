@@ -104,7 +104,7 @@ class App extends Component {
         <Switch>
         <Route 
             path='/library'
-            component={props => <Library signup={this.signup} signin={this.signin} {...props} user={this.state.user} selectGame={this.selectGame} />}
+            component={props => <Library signup={this.signup} signin={this.signin} {...props} user={this.state.user} selectGame={this.selectGame} game_id={this.state.game_id} />}
           />
         <Route 
             path='/signupform'
@@ -112,7 +112,7 @@ class App extends Component {
           />
           <Route 
             path='/allgames' 
-            component={props => <GameIndex games={this.applySearchToIndex(this.state.games)} id={this.state.id} user={this.state.user} user_id={this.state.user.id} selectGame={this.selectGame} username={ this.state.user.username} {...props } />} 
+            component={props => <GameIndex games={this.applySearchToIndex(this.state.games)} id={this.state.id} user={this.state.user} game_id={this.state.game_id} user_id={this.state.user.id} selectGame={this.selectGame} username={ this.state.user.username} {...props } />} 
           />
           <Route 
             path='/' 

@@ -32,13 +32,15 @@ class GameIndex extends React.Component {
               key={ game.id }
               game={ game }
               selectGame={ this.selectGame }
+              user_id={this.props.user_id}
+              game_id={this.props.game_id}
             />
           ))
           }
         </Card.Group>
       </div>
       } />
-      <Route path={`${this.props.match.url}/:id`} component={props => <GameDetails user_id={this.props.user.id} {...props }/>} />
+      <Route path={`${this.props.match.url}/:id`} component={props => <GameDetails user_id={this.props.user_id} {...props }/>} />
       </>
     );
   }
