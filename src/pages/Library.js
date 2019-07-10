@@ -23,8 +23,15 @@ class Library extends React.Component {
     //   }
 
     componentDidMount = () => {
-     
         getOwnedGames().then(games => this.setState({ games }))
+      }
+
+      selectGame = game => {
+        this.props.history.push(`/allgames/${game.id}`)
+        // this.setState({
+        //   selectedGame: null
+        // })
+        // document.querySelector("div.ui.modal.transition.visible.active").style.display = "none"
       }
     
     
@@ -37,7 +44,7 @@ class Library extends React.Component {
                 <GameCard
                   key={ game.id }
                   game={ game }
-                  // selectGame={ this.props.selectGame }
+                  selectGame={ this.selectGame }
                 />
               ))}
             </Card.Group>

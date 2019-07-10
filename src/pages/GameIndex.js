@@ -16,7 +16,7 @@ class GameIndex extends React.Component {
   }
 
   componentDidMount = () => {
-    if (!this.props.username) {
+    if (!localStorage.token) {
       this.props.history.push('/login')
     }
   }

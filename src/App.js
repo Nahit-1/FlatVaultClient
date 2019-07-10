@@ -46,7 +46,7 @@ class App extends Component {
           if (data.error) {
             alert(data.error)
           } else {
-            this.signin(data, true)
+            this.signin(data, !this.props.match.url.includes('login'))
             getAllGames().then(games => {
               this.setState({ games })
             })
