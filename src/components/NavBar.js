@@ -15,11 +15,11 @@ export default class NavBar extends Component {
     return (
       <Menu style={{backgroundColor:"#1dbab4"}}>
         <Menu.Item name='browse' active={activeItem === 'browse'} onClick={this.handleItemClick}>
-          All Games
+        <a href='/gameindex'> All Games </a>
         </Menu.Item>
 
         <Menu.Item name='submit' active={activeItem === 'submit'} onClick={this.handleItemClick}>
-          My Games
+        <a href='/library'> My Games </a>
         </Menu.Item>
 
         
@@ -35,9 +35,9 @@ export default class NavBar extends Component {
             Sign Up
           </Menu.Item> */}
 
-          <Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}>
+          {/* <Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}>
             Help
-          </Menu.Item>
+          </Menu.Item> */}
          
         </Menu.Menu>
       </Menu>
