@@ -26,6 +26,8 @@ class GameIndex extends React.Component {
       <>
       <Route path={this.props.match.url} render={ () => 
         <div >
+        <br />
+        <br />
         <Card.Group style={{display: 'flex', justifyContent:'center', direction:"column"}}>
           {this.props.games.map(game => (
             <GameCard

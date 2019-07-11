@@ -13,7 +13,7 @@ export default class NavBar extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu style={{backgroundColor:"#1dbab4"}}>
+      <Menu style={{backgroundColor:"#393f4d"}}>
         <Menu.Item name='browse' active={activeItem === 'browse'} onClick={this.handleItemClick}>
         <a href='/allgames'> All Games </a>
         </Menu.Item>
@@ -35,9 +35,9 @@ export default class NavBar extends Component {
             Sign Up
           </Menu.Item> */}
 
-          {/* <Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}>
-            Help
-          </Menu.Item> */}
+          <Menu.Item name='help' active={activeItem === 'help'} onClick={this.props.signout}>
+            Sign out 
+          </Menu.Item>
          
         </Menu.Menu>
       </Menu>

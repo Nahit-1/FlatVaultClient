@@ -97,7 +97,7 @@ class App extends Component {
     const { user } = this.state
     return (
       <div className='App'>
-        <NavBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} handleGenreFilter={this.handleGenreFilter} />
+        <NavBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} handleGenreFilter={this.handleGenreFilter} username={this.state.user.username} signout={signout} />
         
         <Header username={this.state.user.username} signout={signout} />
         
