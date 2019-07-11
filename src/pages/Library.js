@@ -46,6 +46,7 @@ class Library extends React.Component {
                   game={ game }
                   selectGame={ this.selectGame }
                 />
+                
               ))}
             </Card.Group>
           </div>

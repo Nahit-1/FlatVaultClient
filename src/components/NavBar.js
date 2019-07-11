@@ -15,7 +15,7 @@ export default class NavBar extends Component {
     return (
       <Menu style={{backgroundColor:"#1dbab4"}}>
         <Menu.Item name='browse' active={activeItem === 'browse'} onClick={this.handleItemClick}>
-        <a href='/gameindex'> All Games </a>
+        <a href='/allgames'> All Games </a>
         </Menu.Item>
 
         <Menu.Item name='submit' active={activeItem === 'submit'} onClick={this.handleItemClick}>
