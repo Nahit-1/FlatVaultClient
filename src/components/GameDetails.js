@@ -6,6 +6,7 @@ import { getGame } from "../services/api"
 import ReviewContainer from "../components/ReviewContainer"; // component to display all reviews.
 import ReviewForm from "../components/ReviewForm" // component to create review
 import { newUsergame } from '../services/api'
+import { deleteUsergame } from '../services/api'
 
 class GameDetails extends Component {
   state = {
@@ -72,6 +73,11 @@ class GameDetails extends Component {
                 fluid size='large'>
             Add to Library!
           </Button>
+          <Button 
+                onClick={this.handleSubmit}
+                usergame_id={this.state.usergame} >
+                REMOVE FROM LIBRARY
+           </Button>
       </Modal>
       :
       <div>LOADING</div>

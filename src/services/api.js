@@ -51,4 +51,12 @@ export function newUsergame ( user_id, game_id) {
     }).then(resp => resp.json())
   }
 
-export default { signin, validate, getAllGames, getGame, signup }
+export function deleteUsergame ( usergame_id ) {
+    return fetch('http://localhost:3001/usergames', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ usergame_id })
+      }).then(resp => resp.json())
+}
+
+export default { signin, validate, getAllGames, getGame, signup, deleteUsergame }
